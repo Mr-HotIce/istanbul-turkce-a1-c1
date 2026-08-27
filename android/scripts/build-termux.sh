@@ -27,8 +27,8 @@ aapt package -f \
   -J "$ROOT/build/gen" \
   --min-sdk-version 26 \
   --target-sdk-version 33 \
-  --version-code 4 \
-  --version-name 1.1.2
+  --version-code 5 \
+  --version-name 1.1.3
 
 echo "javac..."
 find "$ROOT/app/src/main/java" "$ROOT/build/gen" -name '*.java' > "$ROOT/build/sources.txt"
@@ -56,7 +56,7 @@ if [ ! -f "$KS" ]; then
     -dname "CN=IstanbulKartlar,O=MrHotIce,C=RU"
 fi
 
-OUT="$ROOT/IstanbulKartlar-1.1.2.apk"
+OUT="$ROOT/IstanbulKartlar-1.1.3.apk"
 echo "sign..."
 apksigner sign --ks "$KS" --ks-pass pass:android --ks-key-alias androiddebugkey \
   --key-pass pass:android --out "$OUT" "$ROOT/build/withdex.apk"

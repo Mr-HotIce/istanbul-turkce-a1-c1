@@ -1,6 +1,6 @@
 android/build/
 android/tools/
+android/scripts/.cache/
 **/*.idsig
 .DS_Store
-android/*.apk
 android/*.apk
