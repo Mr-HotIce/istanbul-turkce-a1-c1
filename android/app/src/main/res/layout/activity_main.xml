@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="İstanbul Kartlar"
+            android:text="Petrov Fiiller"
             android:textColor="@color/ink"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Турецкие слова İstanbul A1–C1 после включения и разблокировки экрана. На обороте: русский перевод и транскрипция."
+            android:text="İstanbul A1–C1 fiilleri. Ekran açılınca ve kilit açılınca Dmitry Petrov’un 9 gözlü tablosu: gelecek / şimdi / geçmiş × ? / + / − (ben)."
             android:textColor="@color/muted"
             android:textSize="15sp" />
 
@@ -38,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Показывать карточки"
+                android:text="Kartları göster"
                 android:textColor="@color/ink"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="После включения экрана"
+                android:text="Ekran açılınca"
                 android:textColor="@color/ink"
                 android:textSize="16sp" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="После разблокировки"
+                android:text="Kilit açılınca"
                 android:textColor="@color/ink"
                 android:textSize="16sp" />
 
@@ -92,19 +92,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rowVerbsOnly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
+            android:visibility="gone"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Только глаголы (таблица Петрова)"
-                android:textColor="@color/ink"
-                android:textSize="16sp" />
 
             <Switch
                 android:id="@+id/switchVerbsOnly"
@@ -127,34 +119,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:text="Показать карточку сейчас" />
+            android:text="Kartı şimdi göster" />
 
         <Button
             android:id="@+id/btnOverlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Разрешить поверх окон" />
+            android:text="Diğer uygulamaların üstünde" />
 
         <Button
             android:id="@+id/btnBattery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Не экономить батарею" />
+            android:text="Pil optimizasyonunu kapat" />
 
         <Button
             android:id="@+id/btnNotify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Разрешить уведомления" />
+            android:text="Bildirimlere izin ver" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Чтобы карточка всплывала всегда: включи «поверх окон» и отключи оптимизацию батареи для этого приложения."
+            android:text="Kart her zaman çıksın: üstte gösterme izni ver ve bu uygulama için pili kısıtlama."
             android:textColor="@color/muted"
             android:textSize="13sp" />
     </LinearLayout>

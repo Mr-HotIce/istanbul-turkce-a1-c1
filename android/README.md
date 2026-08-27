@@ -1,36 +1,31 @@
-# İstanbul Kartlar
+# Petrov Fiiller
 
-Android-приложение: после **включения экрана** и после **разблокировки** показывает карточку Oxford 3000+5000.
+Ekran açılınca ve kilit açılınca **yalnızca fiiller**. Arka yüz: Dmitry Petrov’un 9 gözlü tablosu.
 
-- Лицевая сторона: английское слово
-- Нажатие: перевод, транскрипция
-- Если глагол: таблица Петрова (will / do-does / did × вопрос / + / −)
+- Ön: mastar (`gitmek`, `devam etmek`)
+- Dokun: **gelecek / şimdi / geçmiş** × **? / + / −** (ben)
+- Sağa kaydır: sonraki fiil
 
-## Установка
+Örnek `gitmek`:
 
-Скачайте `IstanbulKartlar-1.0.0.apk` из [Releases](../../releases) и установите.
+| | ? | + | − |
+| gelecek | Gidecek miyim? | Gideceğim | Gitmeyeceğim |
+| şimdi | Gidiyor muyum? | Gidiyorum | Gitmiyorum |
+| geçmiş | Gittim mi? | Gittim | Gitmedim |
 
-После установки откройте приложение и:
+710 fiil, İstanbul A1–C1.
 
-1. Включите **Показывать карточки**
-2. Нажмите **Разрешить поверх окон**
-3. Нажмите **Не экономить батарею**
-4. На Android 13+ разрешите уведомления
+## Kurulum
 
-Проверка: кнопка **Показать карточку сейчас**. Затем погасите экран и включите снова.
+`IstanbulKartlar-1.1.0.apk`
 
-## Сборка
+1. Kartları göster
+2. Diğer uygulamaların üstünde
+3. Pil optimizasyonunu kapat
+4. Android 13+: bildirimler
 
-```bash
-gradle :app:assembleRelease
-```
-
-На устройстве с Termux:
+## Derleme (Termux)
 
 ```bash
 bash scripts/build-termux.sh
 ```
-
-## Разрешения
-
-Служба в фоне слушает `SCREEN_ON` и `USER_PRESENT` (на Android 8+ их нельзя прописать в манифесте — только динамически). Поэтому нужен foreground-сервис и разрешение поверх окон, иначе система может запретить открыть Activity из фона.

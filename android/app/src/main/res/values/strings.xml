@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">İstanbul Kartlar</string>
-    <string name="service_channel">Карточки на экране</string>
-    <string name="service_title">İstanbul Kartlar работает</string>
-    <string name="service_text">Карточка появится после включения и разблокировки экрана</string>
-    <string name="card_channel">Карточка</string>
-    <string name="tap_hint">нажми — перевод · свайп вправо — дальше</string>
-    <string name="know">Знаю</string>
-    <string name="again">Ещё</string>
-    <string name="close">Закрыть</string>
-    <string name="next">Дальше</string>
+    <string name="app_name">Petrov Fiiller</string>
+    <string name="service_channel">Ekran kartları</string>
+    <string name="service_title">Petrov Fiiller çalışıyor</string>
+    <string name="service_text">Ekran açılınca ve kilit açılınca fiil tablosu gelir</string>
+    <string name="card_channel">Kart</string>
+    <string name="tap_hint">нажми — таблица · свайп вправо — дальше</string>
+    <string name="know">Biliyorum</string>
+    <string name="again">Tekrar</string>
+    <string name="close">Kapat</string>
+    <string name="next">Sonraki</string>
 </resources>

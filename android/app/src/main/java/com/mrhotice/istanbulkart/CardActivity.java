@@ -7,19 +7,28 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import java.util.List;
 
 public class CardActivity extends Activity {
     private Card card;
     private boolean revealed;
     private TextView hint, ipa, ruphon, russian;
+    private TableLayout petrov;
     private GestureDetector gestures;
 
     public static void show(Context c) {
@@ -45,8 +54,8 @@ public class CardActivity extends Activity {
         } else {
             b = new Notification.Builder(c);
         }
-        Notification n = b.setContentTitle("İstanbul Kartlar")
-                .setContentText("Карточка")
+        Notification n = b.setContentTitle("Petrov Fiiller")
+                .setContentText("Kart")
                 .setSmallIcon(R.drawable.ic_stat)
                 .setPriority(Notification.PRIORITY_HIGH)
                 .setCategory(Notification.CATEGORY_ALARM)
@@ -66,6 +75,7 @@ public class CardActivity extends Activity {
         ipa = findViewById(R.id.ipa);
         ruphon = findViewById(R.id.ruphon);
         russian = findViewById(R.id.russian);
+        petrov = findViewById(R.id.petrov);
         findViewById(R.id.cardBody).setOnClickListener(v -> reveal());
         findViewById(R.id.word).setOnClickListener(v -> reveal());
         ((Button) findViewById(R.id.btnClose)).setOnClickListener(v -> finish());
@@ -128,13 +138,15 @@ public class CardActivity extends Activity {
             return;
         }
         ((TextView) findViewById(R.id.word)).setText(card.word);
-        ((TextView) findViewById(R.id.meta)).setText("Türkçe  ·  " + card.level);
+        ((TextView) findViewById(R.id.meta)).setText("глагол  ·  " + card.level + "  ·  я");
         hint.setVisibility(View.VISIBLE);
         ipa.setVisibility(View.GONE);
         ruphon.setVisibility(View.GONE);
         russian.setVisibility(View.GONE);
-        View petrov = findViewById(R.id.petrov);
-        if (petrov != null) petrov.setVisibility(View.GONE);
+        if (petrov != null) {
+            petrov.setVisibility(View.GONE);
+            petrov.removeAllViews();
+        }
     }
 
     private void reveal() {
@@ -149,9 +161,61 @@ public class CardActivity extends Activity {
             ruphon.setText("[" + card.transcription + "]");
             ruphon.setVisibility(View.VISIBLE);
         }
-        if (card.russian != null && !card.russian.isEmpty()) {
+        if (card.russian != null && !card.russian.isEmpty()
+                && !"(нет перевода)".equals(card.russian)) {
             russian.setText(card.russian);
             russian.setVisibility(View.VISIBLE);
         }
+        fillPetrov();
+        if (petrov != null) petrov.setVisibility(View.VISIBLE);
+    }
+
+    private void fillPetrov() {
+        if (petrov == null) return;
+        petrov.removeAllViews();
+        TableRow head = new TableRow(this);
+        head.addView(cell("", true, 0));
+        head.addView(cell("вопрос\n?", true, 1));
+        head.addView(cell("да\n+", true, 2));
+        head.addView(cell("нет\n−", true, 3));
+        petrov.addView(head);
+        List<Petrov.Row> rows = Petrov.table(card);
+        for (Petrov.Row r : rows) {
+            TableRow tr = new TableRow(this);
+            tr.addView(cell(r.label, true, 0));
+            tr.addView(cell(r.q, false, 1));
+            tr.addView(cell(r.a, false, 2));
+            tr.addView(cell(r.n, false, 3));
+            petrov.addView(tr);
+        }
+    }
+
+    private TextView cell(String text, boolean bold, int kind) {
+        TextView tv = new TextView(this);
+        SpannableString sp = new SpannableString(text);
+        int ink = getResources().getColor(R.color.ink);
+        int phon = getResources().getColor(R.color.phon);
+        int ru = getResources().getColor(R.color.ru);
+        int a = text.indexOf('[');
+        int b = text.indexOf(']');
+        if (a >= 0 && b > a) {
+            sp.setSpan(new ForegroundColorSpan(ink), 0, a, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            sp.setSpan(new ForegroundColorSpan(phon), a, b + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (b + 1 < text.length()) {
+                sp.setSpan(new ForegroundColorSpan(ru), b + 1, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+        tv.setText(sp);
+        tv.setTextSize(kind == 0 ? 10.5f : 10f);
+        tv.setPadding(5, 7, 5, 7);
+        tv.setGravity(kind == 0 ? Gravity.CENTER : Gravity.START);
+        tv.setTextColor(ink);
+        if (bold) tv.setTypeface(Typeface.DEFAULT_BOLD);
+        int bg = R.drawable.badge_bg;
+        if (kind == 1) bg = R.drawable.cell_q;
+        else if (kind == 2) bg = R.drawable.cell_a;
+        else if (kind == 3) bg = R.drawable.cell_n;
+        tv.setBackgroundResource(bg);
+        return tv;
     }
 }

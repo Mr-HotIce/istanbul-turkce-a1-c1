@@ -62,11 +62,11 @@ public class MainActivity extends Activity {
         CardStore store = CardStore.get(this);
         boolean overlay = Build.VERSION.SDK_INT < 23 || Settings.canDrawOverlays(this);
         boolean battery = isIgnoringBattery();
-        String s = "Турецких слов: " + store.size()
-                + "  ·  показано: " + Prefs.shown(this)
-                + "\nПоверх окон: " + (overlay ? "да" : "нет")
-                + "  ·  батарея: " + (battery ? "без ограничений" : "экономит")
-                + "  ·  служба: " + (Prefs.isEnabled(this) ? "вкл" : "выкл");
+        String s = "Fiil: " + store.size()
+                + "  ·  gösterilen: " + Prefs.shown(this)
+                + "\nÜstte: " + (overlay ? "evet" : "hayır")
+                + "  ·  pil: " + (battery ? "serbest" : "kısıtlı")
+                + "  ·  servis: " + (Prefs.isEnabled(this) ? "açık" : "kapalı");
         status.setText(s);
     }
 

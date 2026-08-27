@@ -77,7 +77,7 @@
                 android:layout_marginTop="12dp"
                 android:gravity="center"
                 android:textColor="@color/ru"
-                android:textSize="26sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 

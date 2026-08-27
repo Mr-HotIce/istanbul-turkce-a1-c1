@@ -92,7 +92,7 @@ public class UnlockService extends Service {
         nm.createNotificationChannel(fg);
         NotificationChannel card = new NotificationChannel(
                 CH_CARD, getString(R.string.card_channel), NotificationManager.IMPORTANCE_HIGH);
-        card.setDescription("Полноэкранная карточка после экрана");
+        card.setDescription("Ekran açılınca tam ekran fiil kartı");
         card.enableVibration(false);
         nm.createNotificationChannel(card);
     }
