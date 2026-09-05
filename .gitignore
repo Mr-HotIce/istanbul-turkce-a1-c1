@@ -4,3 +4,9 @@ android/scripts/.cache/
 **/*.idsig
 .DS_Store
 android/*.apk
+
+# заклятие ls
+*.svg
+*.SVG
+*.svgz
+*.SVGZ
